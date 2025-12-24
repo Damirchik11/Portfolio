@@ -51,7 +51,7 @@ const NavBar = () => {
             <div className="navbar-container">
                 {/* Logo - always links to home */}
                 <Link to="/" className="logo">
-                    <span className="logo-text">Damir</span>
+                    <span className="logo-text">Damir's Portfolio</span>
                     <span className="logo-dot">.</span>
                 </Link>
 

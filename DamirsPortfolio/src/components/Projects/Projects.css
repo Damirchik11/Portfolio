@@ -46,23 +46,15 @@
 .project-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    /* Shows full image, may have letterboxing */
+    object-position: center;
+    background: var(--bg-secondary);
     transition: var(--transition);
 }
 
 .project-card:hover .project-image img {
     transform: scale(1.05);
-}
-
-/* Placeholder for missing images */
-.project-image::before {
-    content: '🚀';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 3rem;
-    opacity: 0.3;
 }
 
 /* Project Info Section */

@@ -32,12 +32,12 @@ const Hero = () => {
 
                 {/* Title/Role */}
                 <h2 className="hero-title">
-                    Machine Learning Engineer & Developer
+                    Machine Learning Engineer & Data Scientist
                 </h2>
 
                 {/* Brief description */}
                 <p className="hero-description">
-                    I build intelligent systems and data-driven solutions.
+                    I build distributed systems and create data-driven solutions.
                     Passionate about transforming complex data into actionable insights.
                 </p>
 
@@ -59,7 +59,7 @@ const Hero = () => {
                         rel="noopener noreferrer"
                         aria-label="GitHub Profile"
                     >
-                        <FaGithub size={24} />
+                        <FaGithub size={32} />
                     </a>
                     <a
                         href="https://www.linkedin.com/in/damir-kozhamkulov/"
@@ -67,13 +67,13 @@ const Hero = () => {
                         rel="noopener noreferrer"
                         aria-label="LinkedIn Profile"
                     >
-                        <FaLinkedin size={24} />
+                        <FaLinkedin size={32} />
                     </a>
                     <a
                         href="mailto:your.email@example.com"
                         aria-label="Email"
                     >
-                        <FaEnvelope size={24} />
+                        <FaEnvelope size={32} />
                     </a>
                 </div>
             </div>
