@@ -76,8 +76,8 @@ const Contact = () => {
         {
             icon: <FaLinkedin />,
             label: 'LinkedIn',
-            value: 'linkedin.com/in/yourprofile',
-            href: 'https://linkedin.com/in/yourprofile'
+            value: 'linkedin.com/in/damir-kozhamkulov',
+            href: 'https://www.linkedin.com/in/damir-kozhamkulov/'
         },
         {
             icon: <FaGithub />,

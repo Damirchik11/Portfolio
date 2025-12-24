@@ -126,7 +126,7 @@ inequality rather than school-level interventions alone.`,
         technologies: ['Python', 'Pandas', 'Scikit-learn', 'Random Forest', 'Matplotlib', 'Seaborn', 'Jupyter', 'Web Scraping'],
 
         // Links
-        github: 'https://github.com/yourusername/lausd-edulytix',
+        github: 'https://github.com/Damirchik11/Comp641',
         demo: null
     },
     {

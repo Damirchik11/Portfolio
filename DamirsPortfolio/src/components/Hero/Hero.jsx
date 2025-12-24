@@ -62,7 +62,7 @@ const Hero = () => {
                         <FaGithub size={24} />
                     </a>
                     <a
-                        href="https://linkedin.com/in/yourusername"
+                        href="https://www.linkedin.com/in/damir-kozhamkulov/"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="LinkedIn Profile"
