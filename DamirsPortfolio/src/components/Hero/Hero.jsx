@@ -54,7 +54,7 @@ const Hero = () => {
                 {/* Social Links */}
                 <div className="hero-socials">
                     <a
-                        href="https://github.com/yourusername"
+                        href="https://github.com/Damirchik11"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="GitHub Profile"
@@ -70,7 +70,7 @@ const Hero = () => {
                         <FaLinkedin size={32} />
                     </a>
                     <a
-                        href="mailto:your.email@example.com"
+                        href="mailto:damir.kozhamkulov2@gmail.com"
                         aria-label="Email"
                     >
                         <FaEnvelope size={32} />

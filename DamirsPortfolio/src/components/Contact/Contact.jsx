@@ -70,8 +70,8 @@ const Contact = () => {
         {
             icon: <FaEnvelope />,
             label: 'Email',
-            value: 'your.email@example.com',
-            href: 'mailto:your.email@example.com'
+            value: 'damir.kozhamkulov2@gmail.com',
+            href: 'mailto:damir.kozhamkulov2@gmail.com'
         },
         {
             icon: <FaLinkedin />,
@@ -82,13 +82,13 @@ const Contact = () => {
         {
             icon: <FaGithub />,
             label: 'GitHub',
-            value: 'github.com/yourusername',
-            href: 'https://github.com/yourusername'
+            value: 'github.com/Damirchik11',
+            href: 'https://github.com/Damirchik11'
         },
         {
             icon: <FaMapMarkerAlt />,
             label: 'Location',
-            value: 'Your City, State',
+            value: 'Los Angeles, CA',
             href: null
         }
     ]
