@@ -1,0 +1,229 @@
+/* ========================================
+   PROJECT PAGE STYLES
+   
+   This styles the individual project detail pages
+   where you showcase ML results and findings.
+   ======================================== */
+
+.project-page {
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: var(--space-xl);
+}
+
+/* Not Found State */
+.not-found {
+    text-align: center;
+    padding: var(--space-xl);
+}
+
+.not-found h1 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-md);
+}
+
+.not-found p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+}
+
+/* Back Link */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: var(--space-xl);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    margin-left: var(--space-lg);
+}
+
+.back-link:hover {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+/* Project Header */
+.project-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--space-xl);
+    padding: 0 var(--space-lg);
+}
+
+.project-header h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.project-subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+}
+
+.project-header .project-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.project-header .project-tags span {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--accent);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: 20px;
+    font-size: var(--font-size-sm);
+}
+
+/* Content Sections */
+.project-section {
+    max-width: 900px;
+    margin: 0 auto var(--space-xl);
+    padding: 0 var(--space-lg);
+}
+
+.project-section h2 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-lg);
+    color: var(--text-primary);
+    position: relative;
+    padding-bottom: var(--space-sm);
+}
+
+.project-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient);
+    border-radius: 2px;
+}
+
+/* Section content - handles multi-line text with bullet points */
+.section-content {
+    background: var(--bg-secondary);
+    padding: var(--space-lg);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.section-content p {
+    color: var(--text-secondary);
+    line-height: 1.9;
+    font-size: var(--font-size-base);
+    white-space: pre-line;
+    /* Preserves line breaks from template literals */
+}
+
+/* Conclusion section - special styling */
+.conclusion .section-content {
+    border-left: 4px solid var(--accent);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+/* Technology Grid */
+.tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.tech-badge {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+
+.tech-badge:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* Project Links */
+.project-links {
+    max-width: 900px;
+    margin: var(--space-xl) auto;
+    padding: 0 var(--space-lg);
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.project-links .btn {
+    padding: var(--space-md) var(--space-xl);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: var(--transition);
+    background: var(--gradient);
+    color: white;
+    border: none;
+}
+
+.project-links .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+}
+
+.project-links .btn-secondary {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+}
+
+.project-links .btn-secondary:hover {
+    background: var(--accent);
+    color: white;
+}
+
+/* Image Containers for Results */
+.result-image {
+    margin: var(--space-xl) 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.result-image figcaption {
+    padding: var(--space-md);
+    background: var(--bg-card);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    text-align: center;
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .project-links {
+        flex-direction: column;
+    }
+
+    .project-links .btn {
+        text-align: center;
+    }
+
+    .section-content {
+        padding: var(--space-md);
+    }
+}
