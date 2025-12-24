@@ -57,6 +57,15 @@ const NavBar = () => {
 
                 {/* Desktop Navigation Links */}
                 <ul className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
+                    {/* Close button inside mobile menu */}
+                    <button
+                        className="mobile-close"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        aria-label="Close navigation menu"
+                    >
+                        <HiX size={32} />
+                    </button>
+
                     {navItems.map((item) => (
                         <li key={item.label}>
                             {isHomePage ? (
@@ -80,13 +89,13 @@ const NavBar = () => {
                     ))}
                 </ul>
 
-                {/* Mobile Menu Toggle Button */}
+                {/* Mobile Menu Toggle Button - Only shows hamburger, close is inside menu */}
                 <button
-                    className="mobile-toggle"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    aria-label="Toggle navigation menu"
+                    className={`mobile-toggle ${isMobileMenuOpen ? 'hidden' : ''}`}
+                    onClick={() => setIsMobileMenuOpen(true)}
+                    aria-label="Open navigation menu"
                 >
-                    {isMobileMenuOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
+                    <HiMenuAlt3 size={24} />
                 </button>
             </div>
         </nav>
