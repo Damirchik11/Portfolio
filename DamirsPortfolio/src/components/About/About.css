@@ -168,3 +168,230 @@
         gap: var(--space-lg);
     }
 }
+
+/* ========================================
+   EXPERIENCE & EDUCATION SECTIONS
+   
+   Timeline layout with vertical line and dots
+   ======================================== */
+
+.experience-section,
+.education-section {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.experience-section h3,
+.education-section h3 {
+    font-size: var(--font-size-xl);
+    color: var(--text-primary);
+    margin-bottom: var(--space-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.section-icon {
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+/* Timeline Container */
+.timeline {
+    position: relative;
+    padding-left: var(--space-xl);
+}
+
+/* Vertical line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+}
+
+/* Timeline Item */
+.timeline-item {
+    position: relative;
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-lg);
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Timeline Dot */
+.timeline-dot {
+    position: absolute;
+    left: calc(-1 * var(--space-xl) + 4px);
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 2px solid var(--bg-secondary);
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+/* Timeline Content */
+.timeline-content {
+    background: var(--bg-card);
+    padding: var(--space-lg);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+}
+
+.timeline-content:hover {
+    border-color: var(--accent);
+    transform: translateX(5px);
+}
+
+.timeline-content h4 {
+    font-size: var(--font-size-lg);
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+}
+
+.timeline-company {
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+}
+
+.timeline-period {
+    display: inline-block;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--text-secondary);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 20px;
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-sm);
+}
+
+.timeline-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-top: var(--space-sm);
+}
+
+.timeline-focus {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-top: var(--space-xs);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .timeline {
+        padding-left: var(--space-lg);
+    }
+
+    .timeline-dot {
+        left: calc(-1 * var(--space-lg) + 4px);
+    }
+
+    .timeline-content {
+        padding: var(--space-md);
+    }
+}
+
+/* ========================================
+   DETAILS DROPDOWN IN EXPERIENCE CARDS
+   ======================================== */
+
+.details-dropdown {
+    margin-top: var(--space-md);
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    color: var(--accent);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.dropdown-toggle:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: var(--accent);
+}
+
+.dropdown-icon {
+    transition: transform 0.3s ease;
+}
+
+.dropdown-toggle.expanded .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.dropdown-content.expanded {
+    max-height: 600px;
+    padding-top: var(--space-md);
+}
+
+/* Bullet point list for details */
+.details-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.details-list li {
+    position: relative;
+    padding-left: var(--space-lg);
+    margin-bottom: var(--space-md);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: var(--font-size-base);
+}
+
+.details-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Custom bullet point */
+.details-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .details-list li {
+        font-size: var(--font-size-sm);
+        padding-left: var(--space-md);
+    }
+
+    .details-list li::before {
+        width: 6px;
+        height: 6px;
+        top: 8px;
+    }
+}
