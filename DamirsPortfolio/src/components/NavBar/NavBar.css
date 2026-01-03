@@ -1,10 +1,5 @@
 /* ========================================
    NAVBAR STYLES
-   
-   CSS CONCEPTS:
-   - position: fixed = stays at top while scrolling
-   - backdrop-filter: blur = frosted glass effect
-   - transition = smooth animation between states
    ======================================== */
 
 .navbar {
@@ -86,10 +81,33 @@
 }
 
 /* ========================================
+   DESKTOP STYLES
+   ======================================== */
+@media (min-width: 769px) {
+    .navbar-container {
+        padding: 0 var(--space-xl);
+    }
+
+    .logo {
+        font-size: calc(var(--font-size-xl) * 1.2);
+    }
+
+    .logo-dot {
+        font-size: 2.4rem;
+    }
+
+    .nav-links {
+        gap: var(--space-l);
+    }
+
+    .nav-links a {
+        font-size: var(--font-size-lg);
+        padding: var(--space-md) var(--space-lg);
+    }
+}
+
+/* ========================================
    RESPONSIVE STYLES
-   
-   @media = applies styles only at certain screen widths
-   768px is a common tablet/mobile breakpoint
    ======================================== */
 @media (max-width: 768px) {
     .mobile-toggle {

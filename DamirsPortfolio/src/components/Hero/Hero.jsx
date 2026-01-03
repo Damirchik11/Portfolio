@@ -3,16 +3,6 @@ import './Hero.css'
 
 /**
  * Hero Component
- * 
- * WHAT IT DOES:
- * - First thing visitors see - makes a strong first impression
- * - Shows your name, title, and a brief tagline
- * - Includes call-to-action buttons and social links
- * 
- * REACT CONCEPTS USED:
- * - JSX: HTML-like syntax for defining UI
- * - className: React's version of HTML class attribute
- * - Fragment (<>): Groups elements without adding extra DOM node
  */
 const Hero = () => {
     return (

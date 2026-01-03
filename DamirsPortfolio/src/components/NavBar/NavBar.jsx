@@ -5,16 +5,6 @@ import './NavBar.css'
 
 /**
  * NavBar Component
- * 
- * WHAT IT DOES:
- * - Displays navigation links that scroll to sections on the home page
- * - Changes appearance when user scrolls (adds background blur)
- * - Shows a hamburger menu on mobile devices
- * 
- * REACT CONCEPTS USED:
- * - useState: Stores whether menu is open and if page has scrolled
- * - useEffect: Adds scroll event listener when component mounts
- * - useLocation: React Router hook to check current page
  */
 const NavBar = () => {
     // State for tracking scroll position and mobile menu
@@ -34,12 +24,9 @@ const NavBar = () => {
 
         window.addEventListener('scroll', handleScroll)
 
-        // Cleanup: Remove listener when component unmounts
-        // This prevents memory leaks
         return () => window.removeEventListener('scroll', handleScroll)
-    }, []) // Empty array = only run once on mount
+    }, [])
 
-    // Navigation items - using # for same-page sections
     const navItems = [
         { label: 'About', href: '#about' },
         { label: 'Projects', href: '#projects' },

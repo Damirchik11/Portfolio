@@ -6,10 +6,6 @@ import './About.css'
 
 /**
  * About Component
- * REACT CONCEPTS USED:
- * - useState: Tracks which experience dropdown is expanded
- * - Array.map(): Transforms data arrays into React elements
- * - Conditional className: Toggles 'expanded' class based on state
  */
 const About = () => {
     // Track which experience card's dropdown is open (by index, -1 = none)
@@ -61,7 +57,7 @@ const About = () => {
             period: 'March 2024 - January 2025',
             description: 'Contributed to infrastructure automation, CI/CD pipelines, and cross-platform development.',
             details: [
-                'Gained experience working with platforms such as Docker, in order to containerize and work within different environments such as RHEL9 and Rockyxcc.',
+                'Gained experience working with platforms such as Docker, in order to containerize and work within different environments such as RHEL9 and Rocky.',
                 'Improved the JFrog Pipelines of the company by implementing Slack notifications to provide real-time updates on pipeline outputs, improving communication and monitoring efficiency.',
                 'Worked cross-functionally on a team, developing a hardening tool with Python and Bash scripts for other products within the company.',
                 'Fixed bugs within the RHEL9 and Rocky environments, ensuring stability and compatibility for development workflows.',

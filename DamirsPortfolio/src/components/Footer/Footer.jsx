@@ -4,14 +4,6 @@ import './Footer.css'
 
 /**
  * Footer Component
- * 
- * WHAT IT DOES:
- * - Displays copyright information
- * - Quick navigation links
- * - Social media icons
- * 
- * REACT CONCEPTS:
- * - Date().getFullYear(): Shows current year dynamically
  */
 const Footer = () => {
     const currentYear = new Date().getFullYear()

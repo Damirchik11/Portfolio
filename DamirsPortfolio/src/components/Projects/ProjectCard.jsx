@@ -2,16 +2,8 @@ import { Link } from 'react-router-dom'
 
 /**
  * ProjectCard Component
- * 
- * WHAT IT DOES:
  * - Displays a preview of a project
  * - Links to the full project detail page
- * 
- * REACT CONCEPTS USED:
- * - Props: Receives `project` object from parent
- * - Destructuring: { project } extracts project from props
- * - Dynamic routing: Link to="/project/${id}"
- * - Conditional rendering: Only shows image if thumbnail exists
  */
 const ProjectCard = ({ project }) => {
     return (

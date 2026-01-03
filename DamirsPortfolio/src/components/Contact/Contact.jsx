@@ -4,17 +4,9 @@ import './Contact.css'
 
 /**
  * Contact Component
- * 
- * WHAT IT DOES:
  * - Provides a contact form for visitors
  * - Shows direct contact information
  * - Links to social profiles
- * 
- * REACT CONCEPTS USED:
- * - useState: Manages form input values
- * - Controlled Components: Input values tied to state
- * - Event Handlers: onChange, onSubmit
- * - Spread operator: ...prev for updating state objects
  */
 const Contact = () => {
     // Form state - object containing all form fields
@@ -29,11 +21,6 @@ const Contact = () => {
 
     /**
      * Handle input changes
-     * 
-     * This is a "controlled component" pattern:
-     * - Input value comes from state
-     * - onChange updates state
-     * - State change triggers re-render with new value
      */
     const handleChange = (e) => {
         const { name, value } = e.target

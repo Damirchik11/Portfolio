@@ -4,15 +4,8 @@ import './Projects.css'
 
 /**
  * Projects Component
- * 
- * WHAT IT DOES:
  * - Displays a grid of project cards
  * - Each card links to a detailed project page
- * 
- * REACT CONCEPTS USED:
- * - Importing data from external file
- * - Array.map(): Iterates over projects array to create cards
- * - Passing props: Each ProjectCard receives a project object
  */
 const Projects = () => {
     return (

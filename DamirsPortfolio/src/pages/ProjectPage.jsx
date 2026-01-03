@@ -6,16 +6,9 @@ import './ProjectPage.css'
 
 /**
  * ProjectPage Component
- * 
- * WHAT IT DOES:
  * - Displays detailed information about a single project
  * - Uses URL parameter to determine which project to show
  * - Renders all project sections: overview, problem, approach, results, conclusion
- * 
- * REACT CONCEPTS:
- * - useParams(): Extracts the :projectId from the URL
- * - Conditional rendering: Shows image only if resultsImage exists
- * - Array.find(): Locates the matching project from data
  */
 const ProjectPage = () => {
     // Get projectId from URL (e.g., /project/lausd-edulytix -> "lausd-edulytix")
