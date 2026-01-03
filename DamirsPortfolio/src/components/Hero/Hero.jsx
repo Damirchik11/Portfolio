@@ -25,7 +25,7 @@ const Hero = () => {
 
             <div className="hero-content">
                 {/* Greeting and Name */}
-                <p className="hero-greeting">Hello, I'm</p>
+                <p className="hero-greeting">Hello, my name is</p>
                 <h1 className="hero-name">
                     <span className="gradient-text">Damir</span>
                 </h1>
@@ -37,8 +37,9 @@ const Hero = () => {
 
                 {/* Brief description */}
                 <p className="hero-description">
-                    I build distributed systems and create data-driven solutions.
-                    Passionate about transforming complex data into actionable insights.
+                    I specialize in building distributed systems and creating data-driven solutions.
+                    I'm passionate about transforming complex data into valuable insights that can
+                    improve people's lives.
                 </p>
 
                 {/* Call-to-Action Buttons */}

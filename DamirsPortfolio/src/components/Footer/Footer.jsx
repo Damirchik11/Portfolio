@@ -23,9 +23,9 @@ const Footer = () => {
                     {/* Logo and tagline */}
                     <div className="footer-brand">
                         <Link to="/" className="footer-logo">
-                            Damir<span>.</span>
+                            Damir Kozhamkulov<span>.</span>
                         </Link>
-                        <p>Building intelligent solutions with data and code.</p>
+                        <p>Using data science to change the world for the better.</p>
                     </div>
 
                     {/* Quick Links */}
@@ -58,7 +58,7 @@ const Footer = () => {
                 {/* Copyright */}
                 <div className="footer-bottom">
                     <p>
-                        © {currentYear} Damir. Made with <FaHeart className="heart" /> using React.
+                        © {currentYear} Damir Kozhamkulov. Made with React.
                     </p>
                 </div>
             </div>

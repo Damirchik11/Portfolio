@@ -21,7 +21,7 @@ const Projects = () => {
                 {/* Section Header */}
                 <div className="section-header">
                     <h2 className="section-title">
-                        My <span className="gradient-text">Projects</span>
+                        Recent <span className="gradient-text">Projects</span>
                     </h2>
                     <div className="section-line"></div>
                     <p className="section-subtitle">

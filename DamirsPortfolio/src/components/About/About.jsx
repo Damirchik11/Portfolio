@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { FaPython, FaReact, FaDatabase, FaGitAlt, FaChevronDown } from 'react-icons/fa'
-import { SiTensorflow, SiPandas, SiScikitlearn, SiJavascript } from 'react-icons/si'
+import { useState, useEffect } from 'react'
+import { FaPython, FaReact, FaDatabase, FaGitAlt, FaChevronDown, FaTimes, FaExpand } from 'react-icons/fa'
+import { SiTensorflow, SiPandas, SiScikitlearn, SiJavascript, SiPytorch, SiRust, SiGnubash, SiCplusplus, SiUnity, SiAmazonwebservices } from 'react-icons/si'
 import { FaBriefcase, FaGraduationCap } from 'react-icons/fa'
 import './About.css'
 
@@ -14,18 +14,44 @@ import './About.css'
 const About = () => {
     // Track which experience card's dropdown is open (by index, -1 = none)
     const [expandedExp, setExpandedExp] = useState(-1)
+    // Track if skills modal is open
+    const [showSkillsModal, setShowSkillsModal] = useState(false)
 
-    // Skills data
-    const skills = [
+    // Primary skills data (displayed in main grid)
+    const primarySkills = [
         { icon: <FaPython />, name: 'Python', level: 90 },
         { icon: <SiTensorflow />, name: 'TensorFlow', level: 80 },
         { icon: <SiPandas />, name: 'Pandas', level: 85 },
         { icon: <SiScikitlearn />, name: 'Scikit-learn', level: 80 },
-        { icon: <FaReact />, name: 'React', level: 75 },
-        { icon: <SiJavascript />, name: 'JavaScript', level: 70 },
+        { icon: <SiPytorch />, name: 'PyTorch', level: 75 },
+        { icon: <SiCplusplus />, name: 'C++', level: 70 },
         { icon: <FaDatabase />, name: 'SQL', level: 75 },
         { icon: <FaGitAlt />, name: 'Git', level: 85 },
     ]
+
+    // Additional skills (shown only in modal)
+    const additionalSkills = [
+        { icon: <FaReact />, name: 'React', level: 75 },
+        { icon: <SiRust />, name: 'Rust', level: 60 },
+        { icon: <SiGnubash />, name: 'Bash (Linux)', level: 80 },
+        { icon: <SiJavascript />, name: 'JavaScript', level: 70 },
+        { icon: <SiUnity />, name: 'Unity Engine', level: 65 },
+        { icon: <SiAmazonwebservices />, name: 'AWS', level: 70 },
+    ]
+
+    // All skills combined for modal
+    const allSkills = [...additionalSkills, ...primarySkills]
+
+    // Close modal on Escape key
+    useEffect(() => {
+        const handleEscape = (e) => {
+            if (e.key === 'Escape' && showSkillsModal) {
+                setShowSkillsModal(false)
+            }
+        }
+        document.addEventListener('keydown', handleEscape)
+        return () => document.removeEventListener('keydown', handleEscape)
+    }, [showSkillsModal])
 
     // Experience data with detailed bullet points
     const experience = [
@@ -93,17 +119,21 @@ const About = () => {
                     {/* Bio/Text Content */}
                     <div className="about-text">
                         <p className="about-intro">
-                            I'm a passionate <strong>Machine Learning Engineer</strong> and developer
-                            with a focus on building intelligent, data-driven solutions.
+                            I'm a <strong>Machine Learning Engineer</strong> and developer
+                            with a focus on creating intelligent, and data-driven solutions.
                         </p>
                         <p>
-                            My journey in tech started with a curiosity about how data can be
+                            My journey started with a curiosity about how data can be
                             transformed into meaningful insights. I specialize in developing
                             machine learning models, analyzing complex datasets, and creating
-                            applications that solve real-world problems.
+                            applications that solve real-world problems. I'm passionate about
+                            making a positive impact on the world through technology.
+                            In today's world, it's crucial to have strong ethics when it comes to
+                            AI and machine learning. I believe that AI should be used to improve
+                            people's lives, not to harm them.
                         </p>
                         <p>
-                            When I'm not coding, you can find me exploring new ML research papers,
+                            When I'm not coding, I am exploring new ML research papers,
                             contributing to open-source projects, or diving into challenging datasets.
                         </p>
 
@@ -128,7 +158,7 @@ const About = () => {
                     <div className="about-skills">
                         <h3>Technical Skills</h3>
                         <div className="skills-grid">
-                            {skills.map((skill) => (
+                            {primarySkills.map((skill) => (
                                 <div key={skill.name} className="skill-card">
                                     <div className="skill-icon">{skill.icon}</div>
                                     <span className="skill-name">{skill.name}</span>
@@ -141,6 +171,13 @@ const About = () => {
                                 </div>
                             ))}
                         </div>
+                        <button
+                            className="expand-skills-btn"
+                            onClick={() => setShowSkillsModal(true)}
+                        >
+                            <FaExpand className="expand-icon" />
+                            <span>View All Skills</span>
+                        </button>
                     </div>
                 </div>
 
@@ -206,6 +243,43 @@ const About = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Skills Modal */}
+            {showSkillsModal && (
+                <div
+                    className="skills-modal-overlay"
+                    onClick={() => setShowSkillsModal(false)}
+                >
+                    <div
+                        className="skills-modal"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <button
+                            className="modal-close-btn"
+                            onClick={() => setShowSkillsModal(false)}
+                        >
+                            <FaTimes />
+                        </button>
+                        <h3 className="modal-title">
+                            All <span className="gradient-text">Technical Skills</span>
+                        </h3>
+                        <div className="modal-skills-grid">
+                            {allSkills.map((skill) => (
+                                <div key={skill.name} className="skill-card">
+                                    <div className="skill-icon">{skill.icon}</div>
+                                    <span className="skill-name">{skill.name}</span>
+                                    <div className="skill-bar">
+                                        <div
+                                            className="skill-progress"
+                                            style={{ width: `${skill.level}%` }}
+                                        ></div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     )
 }
