@@ -148,6 +148,21 @@
     transform: translateY(-2px);
 }
 
+.btn-outline {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.btn-outline:hover {
+    border-color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
 /* Social Links */
 .hero-socials {
     display: flex;

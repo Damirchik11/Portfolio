@@ -17,20 +17,20 @@
  * 4. Add images to /public/images/ folder
  */
 export const projects = [
-    {
-        // Unique identifier - used in URL: /project/lausd-edulytix
-        id: 'lausd-edulytix',
+        {
+                // Unique identifier - used in URL: /project/lausd-edulytix
+                id: 'lausd-edulytix',
 
-        // Display information
-        title: 'LAUSD Edulytix',
-        subtitle: 'Machine Learning for Education Analytics',
-        shortDescription: 'Analyzed LAUSD and Census education data to identify factors driving student success. Discovered that ZIP code—a proxy for socioeconomic factors—was a top predictor, revealing systemic inequities.',
+                // Display information
+                title: 'LAUSD Edulytix',
+                subtitle: 'Machine Learning for Education Analytics',
+                shortDescription: 'Analyzed LAUSD and Census education data to identify factors driving student success. Discovered that ZIP code—a proxy for socioeconomic factors—was a top predictor, revealing systemic inequities.',
 
-        // Image path (place image in /public/images/)
-        thumbnail: '/images/LAUSD.png',
+                // Image path (place image in /public/images/)
+                thumbnail: '/images/LAUSD.png',
 
-        // Detailed content for project page
-        overview: `This project analyzes Los Angeles Unified School District (LAUSD) education data 
+                // Detailed content for project page
+                overview: `This project analyzes Los Angeles Unified School District (LAUSD) education data 
 combined with U.S. Census demographic information to gain insights into the factors that 
 contribute to student success or failure. Our goal was to identify which features were 
 most detrimental to student outcomes and provide actionable insights for educators 
@@ -40,7 +40,7 @@ We examined Income, Distance to School, Students with Disabilities, School Resou
 After-School Programs, Per-Department Funding, and ZIP Code (used as a proxy for 
 analyzing socioeconomic data across LA County districts).`,
 
-        problem: `Schools face several critical challenges:
+                problem: `Schools face several critical challenges:
 
 • Schools are short on staff and resources
 • Student outcome data can be hard to fully understand
@@ -50,7 +50,7 @@ analyzing socioeconomic data across LA County districts).`,
 Understanding which factors most strongly influence student outcomes can help allocate 
 resources more effectively and identify at-risk students early.`,
 
-        approach: `Data Challenges:
+                approach: `Data Challenges:
 
 The necessary data was surprisingly hard to find and manipulate. We encountered issues 
 with Census data by ZIP code and significant data ambiguity that required time to resolve.
@@ -74,7 +74,7 @@ We evaluated multiple machine learning approaches:
 
 Random Forest performed best with our data.`,
 
-        results: `Model Performance:
+                results: `Model Performance:
 
 Our best model (Random Forest) achieved:
 • 80% Precision
@@ -93,19 +93,19 @@ Higher participation rates are associated with higher mean scale scores. However
 participation rate alone is not a strong predictor—scores vary significantly around 
 100% participation, indicating that other factors play crucial roles in student success.`,
 
-        // Images for the results section (array for multiple visualizations)
-        resultsImages: [
-            {
-                src: '/images/participation_rate.png',
-                caption: 'Participation Rate vs Mean Scale Score — Note the high variance at 100% participation'
-            },
-            {
-                src: '/images/best_predictors.png',
-                caption: 'Top Predictors — Budget, Participation Rate, and ZIP Code emerged as the strongest factors'
-            }
-        ],
+                // Images for the results section (array for multiple visualizations)
+                resultsImages: [
+                        {
+                                src: '/images/participation_rate.png',
+                                caption: 'Participation Rate vs Mean Scale Score — Note the high variance at 100% participation'
+                        },
+                        {
+                                src: '/images/best_predictors.png',
+                                caption: 'Top Predictors — Budget, Participation Rate, and ZIP Code emerged as the strongest factors'
+                        }
+                ],
 
-        conclusion: `Important Insight:
+                conclusion: `Important Insight:
 
 We did not expect ZIP code to be one of the model's best predicting factors. This 
 reveals an underlying socioeconomic issue in the education system.
@@ -121,22 +121,22 @@ and fairness of conclusions.
 This finding highlights the need for systemic approaches to addressing educational 
 inequality rather than school-level interventions alone.`,
 
-        // Technologies used
-        tags: ['Machine Learning', 'Python', 'Data Analysis'],
-        technologies: ['Python', 'Pandas', 'Scikit-learn', 'Random Forest', 'Matplotlib', 'Seaborn', 'Jupyter', 'Web Scraping'],
+                // Technologies used
+                tags: ['Machine Learning', 'Python', 'Data Analysis'],
+                technologies: ['Python', 'Pandas', 'Scikit-learn', 'Random Forest', 'Matplotlib', 'Seaborn', 'Jupyter', 'Web Scraping'],
 
-        // Links
-        github: 'https://github.com/Damirchik11/Comp641',
-        demo: null
-    },
-    {
-        id: 'california-wildfire-prediction',
-        title: 'California Wildfire Prediction',
-        subtitle: 'ML Pipeline for Daily Fire Probability Forecasting',
-        shortDescription: 'Built an XGBoost-based ML pipeline to predict daily fire probability at 4km×4km resolution across California, enabling 24-hour operational forecasting for ~40,000 active land cells.',
-        thumbnail: '/images/California_Department_of_Forestry_and_Fire_Protection-Logo.wine.svg',
+                // Links
+                github: 'https://github.com/Damirchik11/Comp641',
+                demo: null
+        },
+        {
+                id: 'california-wildfire-prediction',
+                title: 'California Wildfire Prediction',
+                subtitle: 'ML Pipeline for Daily Fire Probability Forecasting',
+                shortDescription: 'Built an XGBoost-based ML pipeline to predict daily fire probability at 4km×4km resolution across California, enabling 24-hour operational forecasting for ~40,000 active land cells.',
+                thumbnail: '/images/California_Department_of_Forestry_and_Fire_Protection-Logo.wine.svg',
 
-        overview: `This project aimed to build a Machine Learning pipeline to predict Daily Fire Probability 
+                overview: `This project aimed to build a Machine Learning pipeline to predict Daily Fire Probability 
 at 4km × 4km resolution and analyze trends in what features have the strongest predictive 
 power in wildfire ignition.
 
@@ -145,7 +145,7 @@ Key Objectives:
 • Coverage: Entire State of California (~40,000 active land cells)
 • Identify key predictive features for wildfire ignition`,
 
-        problem: `Current Methods & Their Limitations:
+                problem: `Current Methods & Their Limitations:
 
 Existing approaches like the Folsom Index and the National Fire Danger Rating System (NFDRS) 
 have significant shortcomings:
@@ -161,7 +161,7 @@ Limitation 2: Linear Models Miss Complex Interactions
 Our goal was to create a higher-resolution, non-linear model that could capture these 
 complex interactions and provide actionable predictions at a much finer scale.`,
 
-        approach: `Data Collection:
+                approach: `Data Collection:
 
 We gathered diverse datasets from multiple sources:
 • GridMET Climate/Weather dataset
@@ -181,7 +181,7 @@ We evaluated multiple approaches, but XGBoost gave us the best performance. We
 implemented dynamic subsampling to address the class imbalance problem, as standard 
 training produced models that predicted "No Fire" everywhere.`,
 
-        results: `Key Outcomes:
+                results: `Key Outcomes:
 
 • Built an interactive dashboard visualizing our findings
 • Successfully addressed extreme class imbalance (fires occur in <0.2% of cell-day samples)
@@ -201,7 +201,7 @@ Future Improvements:
 • Integrate live weather API (NOAA) into the dashboard
 • Replace XGBoost with ConvLSTM to capture spatial spread (neighbors igniting neighbors)`,
 
-        conclusion: `This project demonstrated the feasibility of high-resolution wildfire prediction 
+                conclusion: `This project demonstrated the feasibility of high-resolution wildfire prediction 
 using machine learning. While existing methods like NFDRS operate at coarse resolutions 
 with linear assumptions, our XGBoost pipeline achieved 4km×4km granularity and captured 
 complex feature interactions.
@@ -214,29 +214,111 @@ With access to real-time weather APIs and spatiotemporal models like ConvLSTM, t
 system could evolve into a production-ready operational forecasting tool for California 
 fire agencies.`,
 
-        tags: ['Machine Learning', 'XGBoost', 'GIS'],
-        technologies: ['Python', 'XGBoost', 'Pandas', 'GeoPandas', 'Rasterio', 'Dashboard', 'Scikit-learn'],
-        github: 'https://github.com/Stepkar2004/FLARE',
-        demo: null
-    },
-    {
-        id: 'project-3',
-        title: 'Project 3',
-        subtitle: 'Your Third Project',
-        shortDescription: 'A brief description of your third project.',
-        thumbnail: '/images/project-3.png',
+                tags: ['Machine Learning', 'XGBoost', 'GIS'],
+                technologies: ['Python', 'XGBoost', 'Pandas', 'GeoPandas', 'Rasterio', 'Dashboard', 'Scikit-learn'],
+                github: 'https://github.com/Stepkar2004/FLARE',
+                demo: null
+        },
+        {
+                id: 'graviteer',
+                title: 'Graviteer',
+                subtitle: '2D Platformer Game - Senior Design Project',
+                shortDescription: 'Created a 2D platformer game following a space-traveling scientist dog researching gravity. Features 20 levels across 5 biomes, custom gravity mechanics including a Gravity Gun, and original pixel art created by the team.',
+                thumbnail: '/images/Unity-Emblem.png',
 
-        overview: 'Detailed overview of this project...',
+                overview: `Graviteer is a 2D platformer game developed as a Senior Design capstone project 
+with a team of 4 developers. The game follows the story of a brilliant scientist dog who 
+travels to space to conduct groundbreaking research on gravity.
 
-        problem: 'The problem this project solves...',
+The game features:
+• 20 challenging levels spread across 5 unique biomes
+• Custom-built physics engine with innovative gravity mechanics
+• Original pixel art created entirely by our team
+• Engaging puzzles that leverage gravity manipulation
 
-        approach: `Your approach and methodology...`,
+Our goal was to create an entertaining and polished gaming experience that showcases 
+original mechanics while demonstrating professional game development practices.`,
 
-        results: `Key results and outcomes...`,
+                problem: `The Challenge:
 
-        tags: ['React', 'JavaScript', 'Web Development'],
-        technologies: ['React', 'JavaScript', 'CSS', 'Node.js'],
-        github: 'https://github.com/yourusername/project-3',
-        demo: 'https://your-demo-link.com'
-    }
+As a Senior Design project, we needed to create a complete, polished game from scratch 
+within a single academic year. This meant tackling:
+
+• Designing unique gameplay mechanics that would stand out
+• Creating cohesive visual assets without a dedicated artist
+• Coordinating a 4-person team across all development phases
+• Balancing scope with quality to deliver a complete experience
+
+We wanted to build something that wasn't just a class project, but a game we'd 
+actually want to play—with original mechanics, hand-crafted visuals, and 
+genuinely fun gameplay.`,
+
+                approach: `Development Process:
+
+We followed Agile methodology with 2-week sprints, using Jira Software to track tasks, 
+user stories, and bug reports. GitHub served as our version control system, enabling 
+seamless collaboration across the team.
+
+Technical Implementation:
+
+• Built with Unity Engine and C# as the primary programming language
+• Developed a custom player controller from scratch for precise movement feel
+• Created a custom gravity system that enables unique gameplay mechanics
+• Designed the Gravity Gun—our signature mechanic—capable of:
+  - Pulling and launching objects across the level
+  - Freezing objects in mid-air
+  - Allowing the player to push off large objects for momentum
+
+Art & Design:
+
+Rather than using asset packs, we created all pixel art in-house. This gave us 
+complete creative control and ensured a cohesive visual style across all 5 biomes. 
+Each team member contributed to asset creation, level design, and playtesting.
+
+Team Coordination:
+
+Weekly stand-ups, code reviews, and dedicated playtesting sessions kept the project 
+on track. We divided responsibilities between gameplay programming, physics systems, 
+art creation, and level design, rotating roles to build well-rounded skills.`,
+
+                results: `Final Product:
+
+• 20 fully playable levels with increasing difficulty curves
+• 5 distinct biomes, each with unique visual themes and gameplay elements
+• Polished gravity mechanics that received positive feedback from playtesters
+• Complete original soundtrack and sound effects
+• Smooth player controller with responsive feel
+
+Key Achievements:
+
+1. Shipped a Complete Game — Unlike many student projects, Graviteer is a 
+   finished, playable experience from start to end.
+
+2. Original Mechanics — The Gravity Gun became our standout feature, enabling 
+   creative puzzle solutions and satisfying physics interactions.
+
+3. Hand-Crafted Art — All pixel art was created by team members, giving the 
+   game a unique visual identity.
+
+4. Professional Workflow — Agile sprints, version control, and proper project 
+   management prepared us for industry-standard development practices.`,
+
+                conclusion: `Graviteer represents the culmination of our undergraduate game development 
+journey. Building a complete 2D platformer from scratch taught us invaluable lessons 
+about scope management, team coordination, and the importance of iteration.
+
+The custom gravity mechanics—particularly the Gravity Gun—proved that unique gameplay 
+ideas can emerge from small teams willing to experiment. Creating all pixel art 
+ourselves, while challenging, resulted in a cohesive aesthetic we're proud of.
+
+Most importantly, we learned that shipping a polished, complete game requires 
+discipline, communication, and a willingness to cut features that don't serve 
+the core experience. Graviteer stands as proof that student teams can deliver 
+professional-quality work with the right focus and collaboration.`,
+
+                tags: ['Game Development', 'Unity', 'C#'],
+                technologies: ['Unity Engine', 'C#', 'Jira', 'GitHub', 'Pixel Art', 'Agile/Scrum'],
+                github: 'https://github.com/Graviteer/graviteer',
+                demo: null
+        }
 ]

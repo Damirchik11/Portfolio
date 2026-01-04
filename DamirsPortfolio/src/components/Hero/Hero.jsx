@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaEnvelope, FaFileAlt } from 'react-icons/fa'
 import './Hero.css'
 
 /**
@@ -39,6 +39,14 @@ const Hero = () => {
                     </a>
                     <a href="#contact" className="btn btn-secondary">
                         Get In Touch
+                    </a>
+                    <a
+                        href="/images/Resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-secondary"
+                    >
+                        <FaFileAlt /> Resume
                     </a>
                 </div>
 

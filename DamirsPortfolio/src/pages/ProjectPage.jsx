@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
+import { useEffect } from 'react'
 import NavBar from '../components/NavBar/NavBar'
 import Footer from '../components/Footer/Footer'
 import { projects } from '../data/projects'
@@ -13,6 +14,11 @@ import './ProjectPage.css'
 const ProjectPage = () => {
     // Get projectId from URL (e.g., /project/lausd-edulytix -> "lausd-edulytix")
     const { projectId } = useParams()
+
+    // Scroll to top when navigating to this page
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [projectId])
 
     // Find the matching project in our data
     const project = projects.find(p => p.id === projectId)

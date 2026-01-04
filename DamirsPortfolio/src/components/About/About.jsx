@@ -125,7 +125,7 @@ const About = () => {
                             applications that solve real-world problems. I'm passionate about
                             making a positive impact on the world through technology.
                             In today's world, it's crucial to have strong ethics when it comes to
-                            AI and machine learning. I believe that AI should be used to improve
+                            AI and machine learning. I believe that new technologies should be used to improve
                             people's lives, not to harm them.
                         </p>
                         <p>
@@ -136,11 +136,11 @@ const About = () => {
                         {/* Quick Stats */}
                         <div className="about-stats">
                             <div className="stat">
-                                <span className="stat-number">3+</span>
+                                <span className="stat-number">6+</span>
                                 <span className="stat-label">Projects</span>
                             </div>
                             <div className="stat">
-                                <span className="stat-number">5+</span>
+                                <span className="stat-number">10+</span>
                                 <span className="stat-label">Technologies</span>
                             </div>
                             <div className="stat">
