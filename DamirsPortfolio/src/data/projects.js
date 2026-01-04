@@ -224,7 +224,7 @@ fire agencies.`,
                 title: 'Graviteer',
                 subtitle: '2D Platformer Game - Senior Design Project',
                 shortDescription: 'Created a 2D platformer game following a space-traveling scientist dog researching gravity. Features 20 levels across 5 biomes, custom gravity mechanics including a Gravity Gun, and original pixel art created by the team.',
-                thumbnail: '/images/Unity-Emblem.png',
+                thumbnail: '/images/Unity-logo.png',
 
                 overview: `Graviteer is a 2D platformer game developed as a Senior Design capstone project 
 with a team of 4 developers. The game follows the story of a brilliant scientist dog who 
