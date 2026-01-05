@@ -1,20 +1,5 @@
 /**
  * Projects Data File
- * 
- * WHAT THIS IS:
- * - Central location for all project information
- * - Imported by both Projects grid and ProjectPage detail view
- * - Makes it easy to add/edit projects in one place
- * 
- * JAVASCRIPT CONCEPTS:
- * - export const: Makes this array available to import elsewhere
- * - Array of objects: Each project is an object with properties
- * 
- * TO ADD A NEW PROJECT:
- * 1. Copy one of the project objects below
- * 2. Give it a unique 'id' (used in the URL)
- * 3. Fill in all the fields
- * 4. Add images to /public/images/ folder
  */
 export const projects = [
         {
