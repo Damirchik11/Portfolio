@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import emailjs from '@emailjs/browser'
 import { FaEnvelope, FaLinkedin, FaGithub, FaMapMarkerAlt } from 'react-icons/fa'
 import './Contact.css'
 
@@ -8,6 +9,12 @@ import './Contact.css'
  * - Shows direct contact information
  * - Links to social profiles
  */
+
+// EmailJS Configuration
+const EMAILJS_SERVICE_ID = 'service_jgde4nk'
+const EMAILJS_TEMPLATE_ID = 'template_kpsvqrc'
+const EMAILJS_PUBLIC_KEY = 'aByMoLE_j7nVelW9f'
+
 const Contact = () => {
     // Form state - object containing all form fields
     const [formData, setFormData] = useState({
@@ -17,7 +24,7 @@ const Contact = () => {
     })
 
     const [isSubmitting, setIsSubmitting] = useState(false)
-    const [submitStatus, setSubmitStatus] = useState(null)
+    const [submitStatus, setSubmitStatus] = useState(null) // 'success', 'error', or null
 
     /**
      * Handle input changes
@@ -28,28 +35,39 @@ const Contact = () => {
             ...prev,           // Keep all previous values
             [name]: value      // Update only the changed field
         }))
+        // Clear any previous status when user starts typing again
+        if (submitStatus) setSubmitStatus(null)
     }
 
     /**
-     * Handle form submission
-     * 
-     * Note: This is a placeholder. To actually send emails,
-     * you'd need a backend service like:
-     * - Formspree
-     * - EmailJS
-     * - Your own API
+     * Handle form submission with EmailJS
      */
     const handleSubmit = async (e) => {
-        e.preventDefault()  // Prevent page reload
+        e.preventDefault()
         setIsSubmitting(true)
+        setSubmitStatus(null)
 
-        // Simulate sending (replace with actual service)
-        setTimeout(() => {
-            console.log('Form submitted:', formData)
+        try {
+            await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    message: formData.message,
+                    to_name: 'Damir',  // Your name for the email template
+                },
+                EMAILJS_PUBLIC_KEY
+            )
+
             setSubmitStatus('success')
             setFormData({ name: '', email: '', message: '' })
+        } catch (error) {
+            console.error('EmailJS Error:', error)
+            setSubmitStatus('error')
+        } finally {
             setIsSubmitting(false)
-        }, 1000)
+        }
     }
 
     // Contact information items
@@ -145,7 +163,10 @@ const Contact = () => {
                         </button>
 
                         {submitStatus === 'success' && (
-                            <p className="success-message">Message sent successfully!</p>
+                            <p className="success-message">Message sent successfully! I'll get back to you soon.</p>
+                        )}
+                        {submitStatus === 'error' && (
+                            <p className="error-message">Failed to send message. Please try again or email me directly.</p>
                         )}
                     </form>
 
