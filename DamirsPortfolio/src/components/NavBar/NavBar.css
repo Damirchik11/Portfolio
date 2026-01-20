@@ -37,6 +37,13 @@
     align-items: center;
 }
 
+.logo-img {
+    height: 40px;
+    width: 40px;
+    margin-right: var(--space-sm);
+    border-radius: 50%;
+}
+
 .logo-text {
     color: var(--text-primary);
 }

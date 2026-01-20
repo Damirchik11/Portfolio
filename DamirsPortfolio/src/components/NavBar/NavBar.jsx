@@ -38,6 +38,7 @@ const NavBar = () => {
             <div className="navbar-container">
                 {/* Logo - always links to home */}
                 <Link to="/" className="logo">
+                    <img src="/logo.png" alt="DK Logo" className="logo-img" />
                     <span className="logo-text">Damir's Portfolio</span>
                     <span className="logo-dot">.</span>
                 </Link>
