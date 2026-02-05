@@ -87,8 +87,8 @@ const Contact = () => {
         {
             icon: <FaGithub />,
             label: 'GitHub',
-            value: 'github.com/Damirchik11',
-            href: 'https://github.com/Damirchik11'
+            value: 'github.com/damir-kozhamkulov',
+            href: 'https://github.com/damir-kozhamkulov'
         },
         {
             icon: <FaMapMarkerAlt />,

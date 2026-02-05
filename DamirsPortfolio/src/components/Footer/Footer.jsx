@@ -34,7 +34,7 @@ const Footer = () => {
                     <div className="footer-social">
                         <h4>Connect</h4>
                         <div className="social-icons">
-                            <a href="https://github.com/Damirchik11" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/damir-kozhamkulov" target="_blank" rel="noopener noreferrer">
                                 <FaGithub />
                             </a>
                             <a href="https://www.linkedin.com/in/damir-kozhamkulov/" target="_blank" rel="noopener noreferrer">

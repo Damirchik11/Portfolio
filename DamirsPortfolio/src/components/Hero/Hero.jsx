@@ -53,7 +53,7 @@ const Hero = () => {
                 {/* Social Links */}
                 <div className="hero-socials">
                     <a
-                        href="https://github.com/Damirchik11"
+                        href="https://github.com/damir-kozhamkulov"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="GitHub Profile"
