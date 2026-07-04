@@ -1,5 +1,5 @@
 /* ========================================
-   NAVBAR STYLES
+   NAVBAR — mono, numbered, hairline
    ======================================== */
 
 .navbar {
@@ -8,53 +8,66 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: var(--space-md) 0;
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border-bottom: 1px solid transparent;
     transition: var(--transition);
 }
 
-/* When scrolled, add background with blur effect */
+/* When scrolled: paper background + hairline, no shadow/blur */
 .navbar.scrolled {
-    background: rgba(10, 10, 15, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    background: var(--paper);
+    border-bottom-color: var(--line-strong);
+}
+
+/* Scroll progress line along the very top edge */
+.nav-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--signal-deep);
+    transform-origin: left;
+    transform: scaleX(0);
 }
 
 .navbar-container {
-    max-width: 1200px;
+    width: 100%;
+    max-width: 1360px;
     margin: 0 auto;
-    padding: 0 var(--space-lg);
+    padding: 0 var(--gutter);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Logo Styles */
+/* Logo */
 .logo {
-    font-size: var(--font-size-xl);
-    font-weight: 700;
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    gap: var(--space-sm);
 }
 
-.logo-img {
-    height: 40px;
-    width: 40px;
-    margin-right: var(--space-sm);
-    border-radius: 50%;
+.logo-mark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--font-size-lg);
+    color: var(--ink);
 }
 
 .logo-text {
-    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
 }
 
-.logo-dot {
-    color: var(--accent);
-    font-size: 2rem;
-}
-
-.logo:hover .logo-text {
-    color: var(--accent);
+.logo:hover .logo-mark {
+    color: var(--signal-deep);
 }
 
 /* Navigation Links */
@@ -65,16 +78,23 @@
 }
 
 .nav-links a {
-    color: var(--text-secondary);
-    font-weight: 500;
-    padding: var(--space-sm) var(--space-md);
-    border-radius: var(--border-radius);
-    transition: var(--transition);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    padding: var(--space-xs) 0;
+    border-bottom: 2px solid transparent;
 }
 
 .nav-links a:hover {
-    color: var(--text-primary);
-    background: rgba(99, 102, 241, 0.1);
+    color: var(--signal-deep);
+    border-bottom-color: var(--signal);
+}
+
+.nav-index {
+    color: var(--signal-deep);
+    margin-right: 0.5em;
 }
 
 /* Mobile Menu Toggle - Hidden on desktop */
@@ -82,41 +102,24 @@
     display: none;
     background: none;
     border: none;
-    color: var(--text-primary);
+    color: var(--ink);
     cursor: pointer;
     padding: var(--space-sm);
 }
 
-/* ========================================
-   DESKTOP STYLES
-   ======================================== */
-@media (min-width: 769px) {
-    .navbar-container {
-        padding: 0 var(--space-xl);
-    }
-
-    .logo {
-        font-size: calc(var(--font-size-xl) * 1.2);
-    }
-
-    .logo-dot {
-        font-size: 2.4rem;
-    }
-
-    .nav-links {
-        gap: var(--space-l);
-    }
-
-    .nav-links a {
-        font-size: var(--font-size-lg);
-        padding: var(--space-md) var(--space-lg);
-    }
+/* Hide mobile-close on desktop */
+.mobile-close {
+    display: none;
 }
 
 /* ========================================
-   RESPONSIVE STYLES
+   MOBILE
    ======================================== */
 @media (max-width: 768px) {
+    .logo-text {
+        display: none;
+    }
+
     .mobile-toggle {
         display: block;
         z-index: 1002;
@@ -128,24 +131,23 @@
     }
 
     .nav-links {
-        /* Hidden by default on mobile */
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background: var(--bg-primary);
+        background: var(--paper);
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        gap: var(--space-xl);
+        align-items: flex-start;
+        padding: 0 var(--gutter);
+        gap: var(--space-lg);
         opacity: 0;
         visibility: hidden;
         transition: var(--transition);
         z-index: 1001;
     }
 
-    /* When menu is open */
     .nav-links.open {
         opacity: 1;
         visibility: visible;
@@ -155,32 +157,20 @@
         font-size: var(--font-size-xl);
     }
 
-    /* Close button inside mobile menu */
     .mobile-close {
+        display: block;
         position: absolute;
         top: var(--space-lg);
-        right: var(--space-lg);
+        right: var(--gutter);
         background: none;
         border: none;
-        color: var(--text-primary);
+        color: var(--ink);
         cursor: pointer;
         padding: var(--space-sm);
         transition: var(--transition);
     }
 
     .mobile-close:hover {
-        color: var(--accent);
-        transform: rotate(90deg);
-    }
-}
-
-/* Hide mobile-close on desktop */
-.mobile-close {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .mobile-close {
-        display: block;
+        color: var(--signal-deep);
     }
 }

@@ -1,32 +1,31 @@
 /* ========================================
-   CSS CUSTOM PROPERTIES (Design Tokens)
+   DESIGN TOKENS — "Field Notes"
+   Warm paper, ink type, pastel-pink signal.
    ======================================== */
 :root {
-  /* Colors - Dark Theme */
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #12121a;
-  --bg-card: #1a1a24;
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0b0;
-  --accent: #6366f1;
-  /* Indigo */
-  --accent-hover: #818cf8;
-  --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  /* Surfaces */
+  --paper: #F6F1E9;
+  --paper-raised: #FCF9F3;
 
-  /* Spacing Scale */
-  --space-xs: 0.25rem;
-  /* 4px */
-  --space-sm: 0.5rem;
-  /* 8px */
-  --space-md: 1rem;
-  /* 16px */
-  --space-lg: 2rem;
-  /* 32px */
-  --space-xl: 4rem;
-  /* 64px */
+  /* Ink */
+  --ink: #17150F;
+  --ink-soft: #5D594E;
+
+  /* Hairlines */
+  --line: rgba(23, 21, 15, 0.14);
+  --line-strong: rgba(23, 21, 15, 0.4);
+
+  /* Signal — pastel pink for fills/markers, deep rose for interactive text */
+  --signal: #F2A9C0;
+  --signal-tint: rgba(242, 169, 192, 0.28);
+  --signal-deep: #B0345C;
 
   /* Typography */
-  --font-family: 'Inter', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
   --font-size-lg: 1.25rem;
@@ -34,10 +33,20 @@
   --font-size-2xl: 2rem;
   --font-size-3xl: 3rem;
 
-  /* Effects */
-  --border-radius: 12px;
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  --transition: all 0.3s ease;
+  /* Spacing Scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+
+  /* Effects — sharp corners, hairlines instead of shadows */
+  --radius: 2px;
+  --transition: all 0.25s ease;
+
+  /* Layout */
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --nav-height: 64px;
 }
 
 /* Global Reset */
@@ -54,11 +63,43 @@ html {
 }
 
 body {
-  font-family: var(--font-family);
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  font-family: var(--font-body);
+  background-color: var(--paper);
+  color: var(--ink);
   line-height: 1.6;
   min-height: 100vh;
+  /* Faint graph-paper grid */
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-attachment: fixed;
+}
+
+/* Soften the grid so it reads as texture, not lines */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: var(--paper);
+  opacity: 0.82;
+  pointer-events: none;
+  z-index: -1;
+}
+
+::selection {
+  background: var(--signal);
+  color: var(--ink);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 a {
@@ -67,20 +108,130 @@ a {
   transition: var(--transition);
 }
 
-/* Utility Classes */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ========================================
+   UTILITIES
+   ======================================== */
 .container {
-  max-width: 1200px;
+  max-width: 1360px;
   margin: 0 auto;
-  padding: 0 var(--space-lg);
+  padding: 0 var(--gutter);
 }
 
 .section {
   padding: var(--space-xl) 0;
 }
 
-.gradient-text {
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Mono eyebrow label: "01 — ABOUT" on a full-width rule */
+.eyebrow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--space-xl);
+}
+
+.eyebrow-index {
+  color: var(--signal-deep);
+}
+
+.eyebrow-label {
+  color: var(--ink);
+}
+
+.eyebrow-note {
+  margin-left: auto;
+  color: var(--ink-soft);
+  letter-spacing: 0.08em;
+}
+
+/* Italic serif accent word inside display headlines */
+.serif-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* Mono meta text (dates, captions, tags) */
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.06em;
+}
+
+/* ========================================
+   BUTTONS & LINKS
+   ======================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.85rem 1.75rem;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: var(--transition);
+  background: transparent;
+  color: var(--ink);
+}
+
+.btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn-primary:hover {
+  background: var(--signal-deep);
+  border-color: var(--signal-deep);
+  color: var(--paper);
+}
+
+/* Underlined text link with pink underline */
+.link-underline {
+  color: var(--ink);
+  border-bottom: 2px solid var(--signal);
+  transition: var(--transition);
+}
+
+.link-underline:hover {
+  color: var(--signal-deep);
+  border-bottom-color: var(--signal-deep);
+}
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
 }

@@ -1,268 +1,160 @@
 /* ========================================
-   HERO SECTION STYLES
+   HERO — pinned scroll region
    ======================================== */
 
+/* 200vh scroll region; the inner viewport is sticky for the duration */
 .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: 200vh;
     position: relative;
-    overflow: hidden;
-    padding: var(--space-xl) var(--space-lg);
 }
 
-/* Background with animated gradient orbs */
-.hero-background {
-    position: absolute;
+.hero-sticky {
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
+    height: 100vh;
     overflow: hidden;
+    display: block;
 }
 
-/* Floating gradient orbs for visual interest */
-.gradient-orb {
+/* Mono meta line, top-right under the nav */
+.hero-meta {
     position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.5;
+    top: calc(var(--nav-height) + var(--space-md));
+    right: var(--gutter);
+    text-transform: uppercase;
+    color: var(--ink-soft);
 }
 
-.orb-1 {
-    width: 400px;
-    height: 400px;
-    background: var(--accent);
-    top: -100px;
-    right: -100px;
-    animation: float 8s ease-in-out infinite;
+/* Giant name block, left-aligned, vertically centered */
+.hero-name-block {
+    position: absolute;
+    left: var(--gutter);
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 90vw;
+    will-change: transform;
 }
 
-.orb-2 {
-    width: 300px;
-    height: 300px;
-    background: #8b5cf6;
-    bottom: -50px;
-    left: -50px;
-    animation: float 10s ease-in-out infinite reverse;
-}
-
-/* Floating animation for orbs */
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-30px) rotate(5deg);
-    }
-}
-
-/* Main content container */
-.hero-content {
-    text-align: center;
-    max-width: 800px;
-    z-index: 1;
-}
-
-/* Greeting text */
-.hero-greeting {
-    font-size: var(--font-size-lg);
-    color: var(--accent);
-    margin-bottom: var(--space-sm);
-    animation: fadeInUp 0.6s ease-out;
-}
-
-/* Name - large and prominent */
-.hero-name {
-    font-size: clamp(3rem, 10vw, 6rem);
-    font-weight: 700;
-    line-height: 1.1;
+.hero-kicker {
+    text-transform: uppercase;
+    color: var(--ink-soft);
     margin-bottom: var(--space-md);
-    animation: fadeInUp 0.6s ease-out 0.1s backwards;
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--line-strong);
+    display: inline-block;
 }
 
-/* Title/Role */
-.hero-title {
-    font-size: clamp(1.25rem, 3vw, 1.75rem);
-    font-weight: 400;
-    color: var(--text-secondary);
+.hero-kicker-index {
+    color: var(--signal-deep);
+    margin-right: 0.5em;
+}
+
+.hero-name {
+    font-size: clamp(3.25rem, 10.5vw, 9rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+}
+
+.hero-role {
+    margin-top: var(--space-md);
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+
+/* Statement panel — slides in from the right */
+.hero-statement {
+    position: absolute;
+    right: var(--gutter);
+    top: 50%;
+    transform: translateY(-50%);
+    width: min(560px, 80vw);
+    padding: var(--space-lg);
+    background: var(--paper-raised);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    will-change: transform;
+}
+
+/* Pastel-pink plot marker in the panel corner */
+.hero-statement::before {
+    content: '+';
+    position: absolute;
+    top: 0.4rem;
+    right: 0.6rem;
+    font-family: var(--font-mono);
+    color: var(--signal-deep);
+}
+
+.hero-statement-title {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    margin-bottom: var(--space-md);
+}
+
+.hero-statement-text {
+    color: var(--ink-soft);
     margin-bottom: var(--space-lg);
-    animation: fadeInUp 0.6s ease-out 0.2s backwards;
+    max-width: 46ch;
 }
 
-/* Description paragraph */
-.hero-description {
-    font-size: var(--font-size-lg);
-    color: var(--text-secondary);
-    max-width: 600px;
-    margin: 0 auto var(--space-lg);
-    animation: fadeInUp 0.6s ease-out 0.3s backwards;
-}
-
-/* CTA Buttons Container */
 .hero-cta {
     display: flex;
-    gap: var(--space-md);
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: var(--space-xl);
-    animation: fadeInUp 0.6s ease-out 0.4s backwards;
-}
-
-/* Button Base Styles */
-.btn {
-    padding: var(--space-md) var(--space-lg);
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    font-size: var(--font-size-base);
-    cursor: pointer;
-    transition: var(--transition);
-    border: 2px solid transparent;
-}
-
-.btn-primary {
-    background: var(--gradient);
-    color: white;
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
-}
-
-.btn-secondary {
-    background: transparent;
-    border-color: var(--accent);
-    color: var(--accent);
-}
-
-.btn-secondary:hover {
-    background: var(--accent);
-    color: white;
-    transform: translateY(-2px);
-}
-
-.btn-outline {
-    background: transparent;
-    border-color: rgba(255, 255, 255, 0.3);
-    color: var(--text-primary);
-    display: inline-flex;
     align-items: center;
-    gap: var(--space-sm);
-}
-
-.btn-outline:hover {
-    border-color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.05);
-    transform: translateY(-2px);
-}
-
-/* Social Links */
-.hero-socials {
-    display: flex;
     gap: var(--space-lg);
-    justify-content: center;
-    animation: fadeInUp 0.6s ease-out 0.5s backwards;
+    flex-wrap: wrap;
 }
 
-.hero-socials a {
-    color: var(--text-secondary);
-    padding: var(--space-sm);
-    border-radius: 50%;
-    transition: var(--transition);
+.hero-resume {
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 2px solid var(--signal);
+    padding-bottom: 2px;
 }
 
-.hero-socials a:hover {
-    color: var(--accent);
-    transform: translateY(-3px);
+.hero-resume:hover {
+    color: var(--signal-deep);
+    border-bottom-color: var(--signal-deep);
 }
 
-/* Scroll Indicator */
-.scroll-indicator {
+/* Scroll hint, bottom-left */
+.hero-scroll-hint {
     position: absolute;
     bottom: var(--space-lg);
-    left: 50%;
-    transform: translateX(-50%);
-    animation: bounce 2s infinite;
+    left: var(--gutter);
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    transition: opacity 0.3s ease;
 }
 
-.scroll-arrow {
-    width: 30px;
-    height: 50px;
-    border: 2px solid var(--text-secondary);
-    border-radius: 25px;
-    position: relative;
+.hero-scroll-hint.is-hidden {
+    opacity: 0;
 }
 
-.scroll-arrow::before {
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    width: 6px;
-    height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    transform: translateX(-50%);
-    animation: scrollDown 2s infinite;
+/* ========================================
+   STATIC FALLBACK (mobile / reduced motion)
+   ======================================== */
+.hero-static {
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: calc(var(--nav-height) + var(--space-xl)) 0 var(--space-xl);
 }
 
-/* Animation Keyframes */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.hero-static-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
 }
 
-@keyframes bounce {
-
-    0%,
-    100% {
-        transform: translateX(-50%) translateY(0);
-    }
-
-    50% {
-        transform: translateX(-50%) translateY(10px);
-    }
+.hero-static .hero-name-block,
+.hero-static .hero-statement {
+    position: static;
+    transform: none;
 }
 
-@keyframes scrollDown {
-    0% {
-        opacity: 1;
-        top: 10px;
-    }
-
-    100% {
-        opacity: 0;
-        top: 30px;
-    }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .hero {
-        padding-top: 100px;
-    }
-
-    .hero-cta {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .btn {
-        width: 100%;
-        max-width: 250px;
-    }
+.hero-statement-static {
+    width: 100%;
+    max-width: 640px;
 }

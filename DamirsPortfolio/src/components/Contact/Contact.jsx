@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
-import { FaEnvelope, FaLinkedin, FaGithub, FaMapMarkerAlt } from 'react-icons/fa'
 import './Contact.css'
 
 /**
  * Contact Component
- * - Provides a contact form for visitors
- * - Shows direct contact information
- * - Links to social profiles
+ * - Oversized closing headline + giant email link
+ * - Underline-style form submitted via EmailJS (logic unchanged)
  */
 
 // EmailJS Configuration
@@ -26,22 +24,15 @@ const Contact = () => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitStatus, setSubmitStatus] = useState(null) // 'success', 'error', or null
 
-    /**
-     * Handle input changes
-     */
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData(prev => ({
-            ...prev,           // Keep all previous values
-            [name]: value      // Update only the changed field
+            ...prev,
+            [name]: value
         }))
-        // Clear any previous status when user starts typing again
         if (submitStatus) setSubmitStatus(null)
     }
 
-    /**
-     * Handle form submission with EmailJS
-     */
     const handleSubmit = async (e) => {
         e.preventDefault()
         setIsSubmitting(true)
@@ -55,7 +46,7 @@ const Contact = () => {
                     from_name: formData.name,
                     from_email: formData.email,
                     message: formData.message,
-                    to_name: 'Damir',  // Your name for the email template
+                    to_name: 'Damir',
                 },
                 EMAILJS_PUBLIC_KEY
             )
@@ -70,53 +61,32 @@ const Contact = () => {
         }
     }
 
-    // Contact information items
-    const contactInfo = [
-        {
-            icon: <FaEnvelope />,
-            label: 'Email',
-            value: 'damir.kozhamkulov2@gmail.com',
-            href: 'mailto:damir.kozhamkulov2@gmail.com'
-        },
-        {
-            icon: <FaLinkedin />,
-            label: 'LinkedIn',
-            value: 'linkedin.com/in/damir-kozhamkulov',
-            href: 'https://www.linkedin.com/in/damir-kozhamkulov/'
-        },
-        {
-            icon: <FaGithub />,
-            label: 'GitHub',
-            value: 'github.com/damir-kozhamkulov',
-            href: 'https://github.com/damir-kozhamkulov'
-        },
-        {
-            icon: <FaMapMarkerAlt />,
-            label: 'Location',
-            value: 'Los Angeles, CA',
-            href: null
-        }
-    ]
-
     return (
         <section id="contact" className="contact section">
             <div className="container">
-                {/* Section Header */}
-                <div className="section-header">
-                    <h2 className="section-title">
-                        Get In <span className="gradient-text">Touch</span>
-                    </h2>
-                    <div className="section-line"></div>
-                    <p className="section-subtitle">
-                        Have a project in mind? Let's work together!
-                    </p>
+                <div className="eyebrow">
+                    <span className="eyebrow-index">03</span>
+                    <span className="eyebrow-label">Contact</span>
+                    <span className="eyebrow-note">Open to work</span>
                 </div>
 
-                <div className="contact-content">
+                {/* Oversized closing line */}
+                <h2 className="contact-headline">
+                    Let's build <span className="serif-accent">something.</span>
+                </h2>
+
+                <a
+                    href="mailto:damir.kozhamkulov2@gmail.com"
+                    className="contact-email"
+                >
+                    damir.kozhamkulov2@gmail.com
+                </a>
+
+                <div className="contact-grid">
                     {/* Contact Form */}
                     <form className="contact-form" onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label htmlFor="name">Name</label>
+                            <label htmlFor="name" className="mono">Name</label>
                             <input
                                 type="text"
                                 id="name"
@@ -129,7 +99,7 @@ const Contact = () => {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email" className="mono">Email</label>
                             <input
                                 type="email"
                                 id="email"
@@ -142,7 +112,7 @@ const Contact = () => {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="message">Message</label>
+                            <label htmlFor="message" className="mono">Message</label>
                             <textarea
                                 id="message"
                                 name="message"
@@ -156,43 +126,62 @@ const Contact = () => {
 
                         <button
                             type="submit"
-                            className="btn btn-primary"
+                            className="btn btn-primary contact-submit"
                             disabled={isSubmitting}
                         >
-                            {isSubmitting ? 'Sending...' : 'Send Message'}
+                            {isSubmitting ? 'Sending…' : 'Send message →'}
                         </button>
 
                         {submitStatus === 'success' && (
-                            <p className="success-message">Message sent successfully! I'll get back to you soon.</p>
+                            <p className="form-status form-status-success mono">
+                                Message sent — I'll get back to you soon.
+                            </p>
                         )}
                         {submitStatus === 'error' && (
-                            <p className="error-message">Failed to send message. Please try again or email me directly.</p>
+                            <p className="form-status form-status-error mono">
+                                Failed to send. Please email me directly.
+                            </p>
                         )}
                     </form>
 
-                    {/* Contact Info */}
-                    <div className="contact-info">
-                        <h3>Contact Information</h3>
-                        <p className="contact-intro">
-                            Feel free to reach out through any of these channels:
-                        </p>
-
-                        <div className="info-list">
-                            {contactInfo.map((item) => (
-                                <div key={item.label} className="info-item">
-                                    <span className="info-icon">{item.icon}</span>
-                                    <div className="info-content">
-                                        <span className="info-label">{item.label}</span>
-                                        {item.href ? (
-                                            <a href={item.href} target="_blank" rel="noopener noreferrer">
-                                                {item.value}
-                                            </a>
-                                        ) : (
-                                            <span>{item.value}</span>
-                                        )}
-                                    </div>
-                                </div>
-                            ))}
+                    {/* Direct channels */}
+                    <div className="contact-channels">
+                        <div className="channel-row">
+                            <span className="channel-label mono">LinkedIn</span>
+                            <a
+                                href="https://www.linkedin.com/in/damir-kozhamkulov/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="channel-value"
+                            >
+                                damir-kozhamkulov ↗
+                            </a>
+                        </div>
+                        <div className="channel-row">
+                            <span className="channel-label mono">GitHub</span>
+                            <a
+                                href="https://github.com/damir-kozhamkulov"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="channel-value"
+                            >
+                                damir-kozhamkulov ↗
+                            </a>
+                        </div>
+                        <div className="channel-row">
+                            <span className="channel-label mono">Location</span>
+                            <span className="channel-value">Los Angeles, CA</span>
+                        </div>
+                        <div className="channel-row">
+                            <span className="channel-label mono">Resume</span>
+                            <a
+                                href="/images/Resume.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="channel-value"
+                            >
+                                PDF ↗
+                            </a>
                         </div>
                     </div>
                 </div>

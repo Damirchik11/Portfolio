@@ -6,13 +6,12 @@ import { projects } from '../data/projects'
 import './ProjectPage.css'
 
 /**
- * ProjectPage Component
- * - Displays detailed information about a single project
- * - Uses URL parameter to determine which project to show
- * - Renders all project sections: overview, problem, approach, results, conclusion
+ * ProjectPage Component — editorial case study
+ * - Mono breadcrumb, oversized title, hairline meta table
+ * - Narrative sections in a readable article column with fig-captioned images
+ * - Prev/next project links continue the rail flow
  */
 const ProjectPage = () => {
-    // Get projectId from URL (e.g., /project/lausd-edulytix -> "lausd-edulytix")
     const { projectId } = useParams()
 
     // Scroll to top when navigating to this page
@@ -20,139 +19,150 @@ const ProjectPage = () => {
         window.scrollTo(0, 0)
     }, [projectId])
 
-    // Find the matching project in our data
-    const project = projects.find(p => p.id === projectId)
+    const projectIndex = projects.findIndex(p => p.id === projectId)
+    const project = projects[projectIndex]
 
     // Handle case where project doesn't exist
     if (!project) {
         return (
             <>
                 <NavBar />
-                <main className="project-page">
+                <main className="project-page container">
                     <div className="not-found">
+                        <p className="mono not-found-code">404 — not found</p>
                         <h1>Project Not Found</h1>
                         <p>The project you're looking for doesn't exist.</p>
-                        <Link to="/" className="btn btn-primary">Back to Home</Link>
+                        <Link to="/" className="btn btn-primary">Back to index</Link>
                     </div>
                 </main>
+                <Footer />
             </>
         )
     }
 
+    const num = String(projectIndex + 1).padStart(2, '0')
+    const prev = projects[projectIndex - 1]
+    const next = projects[projectIndex + 1]
+
+    // Normalize images (supports resultsImages array or legacy single image)
+    const resultsImages = project.resultsImages
+        || (project.resultsImage
+            ? [{ src: project.resultsImage, caption: project.resultsImageCaption }]
+            : [])
+
+    const narrative = [
+        { label: 'Overview', body: project.overview },
+        { label: 'Problem Statement', body: project.problem },
+        { label: 'Approach & Methodology', body: project.approach },
+        { label: 'Results & Findings', body: project.results, images: resultsImages },
+        { label: 'Conclusion', body: project.conclusion },
+    ].filter(section => section.body)
+
     return (
         <>
             <NavBar />
-            <main className="project-page">
-                <Link to="/" className="back-link">← Back to Home</Link>
+            <main className="project-page container">
+                {/* Breadcrumb */}
+                <Link to="/#projects" className="breadcrumb mono">
+                    ← Index / {num}
+                </Link>
 
-                {/* Project Header */}
-                <header className="project-header">
-                    <h1>{project.title}</h1>
-                    <p className="project-subtitle">{project.subtitle}</p>
-                    <div className="project-tags">
-                        {project.tags.map(tag => <span key={tag}>{tag}</span>)}
-                    </div>
+                {/* Case study header */}
+                <header className="case-header">
+                    <span className="case-index mono">{num}</span>
+                    <h1 className="case-title">{project.title}</h1>
+                    {project.subtitle && (
+                        <p className="case-subtitle">{project.subtitle}</p>
+                    )}
                 </header>
 
-                {/* Overview Section */}
-                <section className="project-section">
-                    <h2>Overview</h2>
-                    <div className="section-content">
-                        <p>{project.overview}</p>
+                {/* Meta table */}
+                <div className="case-meta">
+                    <div className="case-meta-cell">
+                        <span className="case-meta-label mono">Tags</span>
+                        <span className="case-meta-value">
+                            {project.tags.join(' · ')}
+                        </span>
                     </div>
-                </section>
-
-                {/* Problem Statement */}
-                <section className="project-section">
-                    <h2>Problem Statement</h2>
-                    <div className="section-content">
-                        <p>{project.problem}</p>
+                    <div className="case-meta-cell">
+                        <span className="case-meta-label mono">Stack</span>
+                        <span className="case-meta-value">
+                            {project.technologies.join(' · ')}
+                        </span>
                     </div>
-                </section>
-
-                {/* Approach & Methodology */}
-                <section className="project-section">
-                    <h2>Approach & Methodology</h2>
-                    <div className="section-content">
-                        <p>{project.approach}</p>
+                    <div className="case-meta-cell">
+                        <span className="case-meta-label mono">Links</span>
+                        <span className="case-meta-value">
+                            <a
+                                href={project.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="case-meta-link"
+                            >
+                                GitHub ↗
+                            </a>
+                            {project.demo && (
+                                <>
+                                    {' / '}
+                                    <a
+                                        href={project.demo}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="case-meta-link"
+                                    >
+                                        Live demo ↗
+                                    </a>
+                                </>
+                            )}
+                        </span>
                     </div>
-                </section>
+                </div>
 
-                {/* Results & Findings */}
-                <section className="project-section">
-                    <h2>Results & Findings</h2>
-                    <div className="section-content">
-                        <p>{project.results}</p>
+                {/* Narrative sections */}
+                <article className="case-article">
+                    {narrative.map((section, sIndex) => (
+                        <section key={section.label} className="case-section">
+                            <h2 className="case-section-heading">
+                                <span className="mono case-section-index">
+                                    {num}.{sIndex + 1}
+                                </span>
+                                {section.label}
+                            </h2>
+                            <p>{section.body}</p>
 
-                        {/* Display results images if available (supports array or single image) */}
-                        {project.resultsImages && project.resultsImages.map((image, index) => (
-                            <figure key={index} className="result-image">
-                                <img
-                                    src={image.src}
-                                    alt={image.caption || `Results visualization ${index + 1}`}
-                                />
-                                {image.caption && (
-                                    <figcaption>{image.caption}</figcaption>
-                                )}
-                            </figure>
-                        ))}
+                            {section.images && section.images.map((image, i) => (
+                                <figure key={i} className="case-figure">
+                                    <div className="case-figure-frame">
+                                        <img
+                                            src={image.src}
+                                            alt={image.caption || `Results visualization ${i + 1}`}
+                                        />
+                                    </div>
+                                    <figcaption className="mono">
+                                        fig. {num}.{i + 1}
+                                        {image.caption ? ` — ${image.caption}` : ''}
+                                    </figcaption>
+                                </figure>
+                            ))}
+                        </section>
+                    ))}
+                </article>
 
-                        {/* Legacy support for single image format */}
-                        {!project.resultsImages && project.resultsImage && (
-                            <figure className="result-image">
-                                <img
-                                    src={project.resultsImage}
-                                    alt={project.resultsImageCaption || 'Results visualization'}
-                                />
-                                {project.resultsImageCaption && (
-                                    <figcaption>{project.resultsImageCaption}</figcaption>
-                                )}
-                            </figure>
-                        )}
-                    </div>
-                </section>
-
-                {/* Conclusion (if available) */}
-                {project.conclusion && (
-                    <section className="project-section conclusion">
-                        <h2>Conclusion</h2>
-                        <div className="section-content">
-                            <p>{project.conclusion}</p>
-                        </div>
-                    </section>
-                )}
-
-                {/* Technologies Used */}
-                <section className="project-section">
-                    <h2>Technologies Used</h2>
-                    <div className="tech-grid">
-                        {project.technologies.map(tech => (
-                            <span key={tech} className="tech-badge">{tech}</span>
-                        ))}
-                    </div>
-                </section>
-
-                {/* Project Links */}
-                <section className="project-links">
-                    <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn"
-                    >
-                        View on GitHub
-                    </a>
-                    {project.demo && (
-                        <a
-                            href={project.demo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn btn-secondary"
-                        >
-                            Live Demo
-                        </a>
-                    )}
-                </section>
+                {/* Prev / next rail navigation */}
+                <nav className="case-nav">
+                    {prev ? (
+                        <Link to={`/project/${prev.id}`} className="case-nav-link">
+                            <span className="mono">← Previous</span>
+                            <span className="case-nav-title">{prev.title}</span>
+                        </Link>
+                    ) : <span />}
+                    {next ? (
+                        <Link to={`/project/${next.id}`} className="case-nav-link case-nav-next">
+                            <span className="mono">Next →</span>
+                            <span className="case-nav-title">{next.title}</span>
+                        </Link>
+                    ) : <span />}
+                </nav>
             </main>
             <Footer />
         </>

@@ -5,42 +5,50 @@ import './NavBar.css'
 
 /**
  * NavBar Component
+ * - Mono, numbered nav items on a hairline rule
+ * - Thin scroll-progress line along the top edge
  */
 const NavBar = () => {
-    // State for tracking scroll position and mobile menu
     const [isScrolled, setIsScrolled] = useState(false)
+    const [scrollProgress, setScrollProgress] = useState(0)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
     const location = useLocation()
 
     // Check if we're on the home page (for section links vs page links)
     const isHomePage = location.pathname === '/'
 
-    // Add scroll listener on component mount
     useEffect(() => {
         const handleScroll = () => {
-            // If scrolled more than 50px, add background to navbar
             setIsScrolled(window.scrollY > 50)
+            const scrollable = document.documentElement.scrollHeight - window.innerHeight
+            setScrollProgress(scrollable > 0 ? window.scrollY / scrollable : 0)
         }
 
-        window.addEventListener('scroll', handleScroll)
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        handleScroll()
 
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
     const navItems = [
-        { label: 'About', href: '#about' },
-        { label: 'Projects', href: '#projects' },
-        { label: 'Contact', href: '#contact' },
+        { index: '01', label: 'About', href: '#about' },
+        { index: '02', label: 'Work', href: '#projects' },
+        { index: '03', label: 'Contact', href: '#contact' },
     ]
 
     return (
         <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+            {/* Scroll progress line */}
+            <div
+                className="nav-progress"
+                style={{ transform: `scaleX(${scrollProgress})` }}
+            />
+
             <div className="navbar-container">
                 {/* Logo - always links to home */}
                 <Link to="/" className="logo">
-                    <img src="/logo.png" alt="DK Logo" className="logo-img" />
-                    <span className="logo-text">Damir's Portfolio</span>
-                    <span className="logo-dot">.</span>
+                    <span className="logo-mark">DK</span>
+                    <span className="logo-text">Damir Kozhamkulov</span>
                 </Link>
 
                 {/* Desktop Navigation Links */}
@@ -57,19 +65,19 @@ const NavBar = () => {
                     {navItems.map((item) => (
                         <li key={item.label}>
                             {isHomePage ? (
-                                // On home page: use anchor links for smooth scroll
                                 <a
                                     href={item.href}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
+                                    <span className="nav-index">{item.index}</span>
                                     {item.label}
                                 </a>
                             ) : (
-                                // On other pages: link back to home with hash
                                 <Link
                                     to={`/${item.href}`}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
+                                    <span className="nav-index">{item.index}</span>
                                     {item.label}
                                 </Link>
                             )}
@@ -77,7 +85,7 @@ const NavBar = () => {
                     ))}
                 </ul>
 
-                {/* Mobile Menu Toggle Button - Only shows hamburger, close is inside menu */}
+                {/* Mobile Menu Toggle Button */}
                 <button
                     className={`mobile-toggle ${isMobileMenuOpen ? 'hidden' : ''}`}
                     onClick={() => setIsMobileMenuOpen(true)}
