@@ -1,0 +1,15 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DK monogram">
+  <!-- Ink badge (was navy) -->
+  <circle cx="512" cy="512" r="512" fill="#17150F"/>
+  <!-- Pastel-pink signal ring (was white ring) -->
+  <circle cx="512" cy="512" r="430" fill="none" stroke="#F2A9C0" stroke-width="26"/>
+  <!-- DK monogram in warm paper (was white) -->
+  <g fill="none" stroke="#F6F1E9" stroke-width="52" stroke-linecap="square" stroke-linejoin="miter">
+    <!-- D -->
+    <path d="M317 370 L427 370 A142 142 0 0 1 427 654 L317 654 Z"/>
+    <!-- K -->
+    <path d="M587 370 L587 654"/>
+    <path d="M587 512 L707 370"/>
+    <path d="M587 512 L707 654"/>
+  </g>
+</svg>
