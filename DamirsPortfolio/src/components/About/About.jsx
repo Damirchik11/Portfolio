@@ -11,19 +11,19 @@ const About = () => {
     // Track which experience row's details are open (by index, -1 = none)
     const [expandedExp, setExpandedExp] = useState(-1)
 
-    // Skills grouped by domain — plain lists, no made-up percentages
+    // Skills grouped by domain — ordered to foreground the ML-systems side
     const skillGroups = [
         {
             label: 'Languages',
-            items: ['Python', 'C++', 'SQL', 'Rust', 'JavaScript', 'Bash'],
+            items: ['Python', 'SQL', 'C++', 'Bash'],
         },
         {
             label: 'ML / Data',
-            items: ['PyTorch', 'TensorFlow', 'scikit-learn', 'Pandas'],
+            items: ['PyTorch', 'scikit-learn', 'XGBoost', 'TensorFlow', 'Pandas', 'NumPy'],
         },
         {
-            label: 'Tools & Platforms',
-            items: ['Git', 'Docker', 'AWS', 'Unity', 'React'],
+            label: 'ML Systems / MLOps',
+            items: ['Docker', 'CI/CD', 'AWS', 'Git', 'Linux'],
         },
     ]
 
@@ -33,13 +33,12 @@ const About = () => {
             title: 'Developer Intern',
             company: 'XYPRO Technology Corporation',
             period: 'Mar 2024 — Jan 2025',
-            description: 'Contributed to infrastructure automation, CI/CD pipelines, and cross-platform development.',
+            description: 'Infrastructure automation, CI/CD, and containerized cross-platform development — the engineering backbone ML systems ship on.',
             details: [
-                'Gained experience working with platforms such as Docker, in order to containerize and work within different environments such as RHEL9 and Rocky.',
-                'Improved the JFrog Pipelines of the company by implementing Slack notifications to provide real-time updates on pipeline outputs, improving communication and monitoring efficiency.',
-                'Worked cross-functionally on a team, developing a hardening tool with Python and Bash scripts for other products within the company.',
-                'Fixed bugs within the RHEL9 and Rocky environments, ensuring stability and compatibility for development workflows.',
-                'Resolved pipeline issues, resulting in a 15% reduction in construction failures and improved deployment reliability.'
+                'Containerized applications with Docker across RHEL9 and Rocky Linux environments — the same packaging and environment-isolation workflow used to deploy ML services reliably.',
+                'Built and improved JFrog CI/CD pipelines, adding Slack notifications for real-time build monitoring — the automation layer that model-training and deployment pipelines depend on.',
+                'Developed a cross-platform security-hardening tool in Python and Bash, adopted across multiple company products.',
+                'Debugged and stabilized automation workflows across Linux environments, reducing pipeline build failures by ~10% and improving deployment reliability.',
             ]
         },
         {
@@ -89,24 +88,28 @@ const About = () => {
                     {/* Sticky bio column */}
                     <div className="about-bio">
                         <h2 className="about-heading">
-                            Data into <span className="serif-accent">decisions.</span>
+                            Models into <span className="serif-accent">production.</span>
                         </h2>
                         <p className="about-intro">
-                            I'm a <strong>Machine Learning Engineer</strong> and developer
-                            with a focus on creating intelligent, data-driven solutions.
+                            I'm a <strong>Machine Learning Engineer</strong> who treats ML
+                            as an engineering problem — not just training models, but
+                            containerizing, deploying, and keeping them reliable.
                         </p>
                         <p>
-                            My journey started with a curiosity about how data can be
-                            transformed into meaningful insights. I specialize in developing
-                            machine learning models, analyzing complex datasets, and creating
-                            applications that solve real-world problems. I believe new
-                            technologies should be used to improve people's lives — strong
-                            ethics in AI matter as much as strong models.
+                            I come from a software and infrastructure background: I've built
+                            and hardened CI/CD pipelines, containerized applications across
+                            Linux environments, and shipped tooling other teams depend on. I
+                            bring that same discipline to machine learning — reproducible
+                            pipelines, tested code, and models that run as real services
+                            rather than one-off notebooks.
                         </p>
                         <p>
-                            When I'm not coding, I'm exploring new ML research papers,
-                            contributing to open-source projects, or diving into challenging
-                            datasets.
+                            My modeling work spans classical ML and deep learning — from
+                            wildfire-risk forecasting on highly imbalanced geospatial data to
+                            education analytics. I care about the parts most models skip: data
+                            quality, evaluation that reflects reality, and the path from
+                            prototype to deployment. I also believe technology should improve
+                            people's lives — strong ethics in AI matter as much as strong models.
                         </p>
                     </div>
 
